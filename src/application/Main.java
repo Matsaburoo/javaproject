@@ -2,6 +2,8 @@ package application;
 
 	
 import java.io.IOException;
+import java.sql.SQLException;
+
 import database.DBconnection;
 
 import database.DBconnection;
@@ -44,6 +46,22 @@ public class Main extends Application {
 		
 		DBconnection DataBase=new DBconnection();
 		DataBase.DBconnect();
+		User u= new User();
+		u.setInfo("Da","Baby");
+		u.setPassword("abcefghy");
+		u.setID();
+		
+		try {
+			DataBase.InsertData(u, u.getID(), u.getUsername(),u.getName(),u.getPassword());
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			DataBase.updateUser("azerty",405602);
+		}catch(Exception  e) {
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 }
